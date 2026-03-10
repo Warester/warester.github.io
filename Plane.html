@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stearman Simulator - Pro Build</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #87CEEB;
+            touch-action: none;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // --- 1. ASSET LOADING & ERROR CHECKING ---
+        let imagesLoaded = 0;
+        const totalImages = 4;
+
+        function checkLoad() {
+            imagesLoaded++;
+            if (imagesLoaded === totalImages) {
+                draw(); // Start the engine ONLY when all images are ready
+            }
+        }
+
+        const skyImg = new Image();
+        skyImg.onload = checkLoad;
+        skyImg.onerror = () => alert("MISSING FILE: sky.jpg");
+        skyImg.src = 'sky.jpg';
+
+        const cloudImg = new Image();
+        cloudImg.onload = checkLoad;
+        cloudImg.onerror = () => alert("MISSING FILE: cloud.png");
+        cloudImg.src = 'cloud.png';
+
+        const roadImg = new Image();
+        roadImg.onload = checkLoad;
+        roadImg.onerror = () => alert("MISSING FILE: road.png");
+        roadImg.src = 'road.png';
+
+        const planeImg = new Image();
+        planeImg.onload = checkLoad;
+        planeImg.onerror = () => alert("MISSING FILE: plane.png");
+        planeImg.src = 'plane.png';
+
+        // --- 2. PHYSICS & VARIABLES ---
+        let gravity = 0.22;
+        let lift = -5.5;
+        let velocity = 0;
+        
+        const plane = {
+            x: canvas.width * 0.15,
+            y: canvas.height / 2,
+            width: 140,
+            height: 90
+        };
+
+        let roadX = 0;
+        let cloudsX = 0;
+
+        // --- 3. THE MAIN ENGINE ---
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Piece 1: Sky
+            ctx.drawImage(skyImg, 0, 0, canvas.width, canvas.height);
+
+            // Piece 2: Clouds (Slow)
+            cloudsX -= 1.2; 
+            if (cloudsX <= -canvas.width) cloudsX = 0;
+            ctx.drawImage(cloudImg, cloudsX, 50, canvas.width, 250);
+            ctx.drawImage(cloudImg, cloudsX + canvas.width, 50, canvas.width, 250);
+
+            // Piece 3: Road (Fast)
+            roadX -= 6; 
+            if (roadX <= -canvas.width) roadX = 0;
+            ctx.drawImage(roadImg, roadX, canvas.height - 180, canvas.width, 180);
+            ctx.drawImage(roadImg, roadX + canvas.width, canvas.height - 180, canvas.width, 180);
+
+            // --- PHYSICS ---
+            velocity += gravity;
+            plane.y += velocity;
+
+            // Ground Collision
+            if (plane.y > canvas.height - 180 - plane.height) {
+                plane.y = canvas.height - 180 - plane.height;
+                velocity = 0;
+            }
+            // Ceiling Collision
+            if (plane.y < 0) {
+                plane.y = 0;
+                velocity = 0;
+            }
+
+            // Piece 4: Plane
+            ctx.drawImage(planeImg, plane.x, plane.y, plane.width, plane.height);
+
+            requestAnimationFrame(draw);
+        }
+
+        // --- 4. CONTROLS ---
+        window.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            velocity = lift;
+        });
+
+        window.addEventListener('mousedown', () => {
+            velocity = lift;
+        });
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
