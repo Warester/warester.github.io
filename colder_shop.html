@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhakti Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f6f2;
+      color: #333;
+    }
+    header {
+  background: url("rahul-mishra-VWdd1ShXTXE-unsplash.jpg") no-repeat center center;
+  background-size: cover;   /* makes the image fill the header */
+  background-position: 50% 20%;
+  color: white;
+  padding: 3rem;
+  text-align: center;
+}
+
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #555;
+    }
+    section {
+      padding: 2rem;
+    }
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      grid-template-rows: repeat(10, auto);  /* 10 rows */
+      gap: 1rem;
+    }
+    .shop-item {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+      background: #fff;
+    }
+    .shop-item img {
+      max-width: 100%;
+      height: auto;
+    }
+    .price {
+      font-weight: bold;
+      color: #b12704;
+      margin: 0.5rem 0;
+    }
+    .shop-item a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: #d4af37;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .shop-item a:hover {
+      background: #b38f2f;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🛍️ Metapedia Shop</h1>
+    <p>Devotional items available via Meesho</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="vlogs.html">Vlogs</a>
+    <a href="videos.html">Videos</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section>
+    <h2>Our Products</h2>
+    <div class="shop-grid">
+      <!-- Example shop items -->
+      <div class="shop-item">
+        <img src="https://via.placeholder.com/200x200?text=Bhakti+Mala" alt="Bhakti Mala">
+        <h3>Bhakti Mala</h3>
+        <p>Beautiful mala for meditation and chanting.</p>
+        <p class="price">₹299</p>
+        <a href="https://www.meesho.com" target="_blank">Buy on Meesho</a>
+      </div>
+
+      <div class="shop-item">
+        <img src="https://via.placeholder.com/200x200?text=Incense+Sticks" alt="Incense Sticks">
+        <h3>Incense Sticks</h3>
+        <p>Fragrant incense for puja and meditation.</p>
+        <p class="price">₹149</p>
+        <a href="https://www.meesho.com" target="_blank">Buy on Meesho</a>
+      </div>
+
+	<div class="shop-item">
+        <img src="https://via.placeholder.com/200x200?text=Incense+Sticks" alt="Incense Sticks">
+        <h3>Mata Clothes</h3>
+        <p>The best Mata clothes</p>
+        <p class="price">₹499</p>
+        <a href="https://www.meesho.com" target="_blank">Buy on Meesho</a>
+      </div>
+	
+
+      <!-- Duplicate this block until you have 20 items -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Bhakti Website. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
