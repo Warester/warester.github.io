@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Vlogs & Videos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Header with background image + overlay */
+    header {
+      background-image: url('sukhpreet-lotey-WdlLDIX6_q8-unsplash.jpg'); /* replace with your header image */
+      background-size: cover;
+      background-position: center 70%; /* shifts focus down */
+      background-repeat: no-repeat;
+      position: relative;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4); /* overlay */
+      z-index: 0;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+    }
+
+    /* Controls (search + filter) */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .controls input, .controls select {
+      padding: 12px 15px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 25px;   /* curvy corners */
+      outline: none;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+    .controls input:focus, .controls select:focus {
+      border-color: #ff9933; /* saffron accent */
+      box-shadow: 0 0 8px rgba(255,153,51,0.4);
+    }
+
+    /* Video grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .video-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+    .video-thumb img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover; /* keeps image proportional */
+    }
+    .video-info {
+      padding: 15px;
+    }
+    .video-info h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      color: #fff;
+      margin-top: 5px;
+    }
+    .badge.travel { background: #ff9933; }
+    .badge.food { background: #cc3333; }
+    .badge.lifestyle { background: #3366cc; }
+    .badge.spiritual { background: #669933; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Vlogs & Videos</h1>
+    <p>Browse through my collection of temple vlogs, myth stories, and spiritual talks.</p>
+  </header>
+
+  <div class="controls">
+    <input type="text" id="searchBox" placeholder="Search videos...">
+    <select id="categoryFilter">
+      <option value="">All Categories</option>
+      <option value="travel">Travel</option>
+      <option value="food">Food</option>
+      <option value="lifestyle">Lifestyle</option>
+      <option value="spiritual">Spiritual</option>
+    </select>
+  </div>
+
+  <div class="video-grid" id="videoGrid">
+    <!-- Example video cards with thumbnails -->
+    <div class="video-card" data-category="travel">
+      <div class="video-thumb">
+        <img src="suketu-solanki-GHMPjvYFJSs-unsplash.jpg" alt="Trip to Somnath Temple">
+      </div>
+      <div class="video-info">
+        <h3>Trip to Somnath Temple</h3>
+        <span class="badge travel">Travel</span>
+      </div>
+    </div>
+
+    <div class="video-card" data-category="food">
+      <div class="video-thumb">
+        <img src="chandan-parihar-RFB_p8IuyiU-unsplash.jpg" alt="Street Food near Temples">
+      </div>
+      <div class="video-info">
+        <h3>Street Food near Temples</h3>
+        <span class="badge food">Food</span>
+      </div>
+    </div>
+
+    <div class="video-card" data-category="spiritual">
+      <div class="video-thumb">
+        <img src="shantanu-kumar-Srr05gJnSrE-unsplash.jpg" alt="Story of Lord Hanuman">
+      </div>
+      <div class="video-info">
+        <h3>Story of Lord Hanuman</h3>
+        <span class="badge spiritual">Spiritual</span>
+      </div>
+    </div>
+
+    <div class="video-card" data-category="lifestyle">
+      <div class="video-thumb">
+        <img src="dev-prajapati-uVeiIEb8PNA-unsplash.jpg" alt="Morning Puja Routine">
+      </div>
+      <div class="video-info">
+        <h3>Morning Puja Routine</h3>
+        <span class="badge lifestyle">Lifestyle</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Search functionality
+    const searchBox = document.getElementById('searchBox');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const videoGrid = document.getElementById('videoGrid');
+    const cards = videoGrid.getElementsByClassName('video-card');
+
+    function filterVideos() {
+      const term = searchBox.value.toLowerCase();
+      const cat = categoryFilter.value;
+      Array.from(cards).forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const category = card.getAttribute('data-category');
+        const matchesSearch = title.includes(term);
+        const matchesCategory = !cat || category === cat;
+        card.style.display = (matchesSearch && matchesCategory) ? '' : 'none';
+      });
+    }
+
+    searchBox.addEventListener('input', filterVideos);
+    categoryFilter.addEventListener('change', filterVideos);
+  </script>
+</body>
+</html>
