@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divine Stories - Metapedia Bhakti</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f6f2;
+      color: #333;
+    }
+    header {
+      background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") no-repeat center;
+      background-size: cover;
+      background-position: 50% 20%;
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    header h1 {
+      position: relative;
+      z-index: 1;
+    }
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #555;
+    }
+    section {
+      padding: 2rem;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .story-item {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      background: #fff;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .story-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: 50% 20%;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+    .story-item h3 {
+      margin: 0.5rem 0;
+      color: #d4af37;
+    }
+    .story-item p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .story-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    .story-item:hover img {
+      transform: scale(1.05);
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📖 Divine Stories</h1>
+    <p>Mythological and devotional tales of Gods and Goddesses</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="stories.html">Stories</a>
+    <a href="vlogs.html">Vlogs</a>
+    <a href="videos.html">Videos</a>
+    <a href="colder_shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+   <section id="stories">
+  <h2>📖 Divine Stories</h2>
+  <div class="story-grid">
+    <!-- Pair 1 -->
+    <div class="story-item">
+      <img src="arvind-kumar-QgKOIsiZLTM-unsplash.jpg" alt="Lord Krishna">
+      <h3>Story of Lord Krishna</h3>
+      <p>From his childhood miracles to the wisdom of the Bhagavad Gita, Krishna’s life inspires millions...</p>
+    </div>
+    <div class="story-item">
+      <img src="karan-suthar-Id45_z8-EiU-unsplash.jpg" alt="Goddess Durga">
+      <h3>Story of Goddess Durga</h3>
+      <p>The tale of Durga defeating Mahishasura reminds us of the eternal triumph of good over evil...</p>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="story-item">
+      <img src="https://via.placeholder.com/200x200?text=Rama" alt="Lord Rama">
+      <h3>Story of Lord Rama</h3>
+      <p>The Ramayana tells of Rama’s devotion, courage, and his victory over Ravana...</p>
+    </div>
+    <div class="story-item">
+      <img src="https://via.placeholder.com/200x200?text=Sita" alt="Goddess Sita">
+      <h3>Story of Goddess Sita</h3>
+      <p>Sita’s purity, strength, and devotion remain a timeless example of virtue...</p>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="story-item">
+      <img src="https://via.placeholder.com/200x200?text=Shiva" alt="Lord Shiva">
+      <h3>Story of Lord Shiva</h3>
+      <p>From the cosmic dance of Nataraja to his role as destroyer of evil, Shiva embodies transformation...</p>
+    </div>
+    <div class="story-item">
+      <img src="https://via.placeholder.com/200x200?text=Parvati" alt="Goddess Parvati">
+      <h3>Story of Goddess Parvati</h3>
+      <p>Parvati’s devotion and love for Shiva symbolize balance and harmony in the universe...</p>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="story-item">
+      <img src="https://via.placeholder.com/200x200?text=Hanuman" alt="Lord Hanuman">
+      <h3>Story of Lord Hanuman</h3>
+      <p>Hanuman’s loyalty and strength in serving Rama make him a symbol of devotion and courage...</p>
+    </div>
+    <div class="story-item">
+      <img src="https://via.placeholder.com/200x200?text=Ganesh" alt="Lord Ganesh">
+      <h3>Story of Lord Ganesh</h3>
+      <p>Ganesh, remover of obstacles, is worshipped for wisdom, prosperity, and new beginnings...</p>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="story-item">
+      <img src="https://via.placeholder.com/200x200?text=Lakshmi" alt="Goddess Lakshmi">
+      <h3>Story of Goddess Lakshmi</h3>
+      <p>Lakshmi, goddess of wealth and fortune, blesses devotees with prosperity and abundance...</p>
+    </div>
+    <div class="story-item">
+      <img src="https://via.placeholder.com/200x200?text=Saraswati" alt="Goddess Saraswati">
+      <h3>Story of Goddess Saraswati</h3>
+      <p>Saraswati, goddess of wisdom and arts, inspires knowledge, creativity, and learning...</p>
+    </div>
+  </div>
+</section>
+
+  <footer>
+    <p>&copy; 2026 Metapedia Bhakti. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
